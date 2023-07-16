@@ -1,12 +1,11 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { useAuth } from "hooks/useAuth";
 
 import Navigation from "components/Navigation/Navigation";
 
 
 export const AppBar = () => {
-    // const { isLoggedIn } = useAuth();
+
     return (
         <header>
             <Navigation />

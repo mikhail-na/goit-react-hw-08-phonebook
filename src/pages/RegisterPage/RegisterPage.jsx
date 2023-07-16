@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import {  register } from "redux/auth/authThunks";
 
 import { Layout } from "components/Layout/Layout";
-import { Form, Label, Input, Button, LinkToLogin, Span, Header, Text} from "./RegisterPage.module";
+import { Form, Label, Input, Button,  Header, Text} from "./RegisterPage.module";
 
 const RegisterPage = () => {
     const [name, setName] = useState('');
