@@ -23,6 +23,7 @@ const LoginPage = () => {
             default:
                 return;
         }
+        
     }
 
     const handleFormSubmit = e => {
