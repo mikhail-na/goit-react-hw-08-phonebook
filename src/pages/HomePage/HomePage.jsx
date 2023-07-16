@@ -2,15 +2,19 @@ import { Layout } from "components/Layout/Layout";
 import { useAuth } from "hooks/useAuth";
 import { Container, GetStartedLink, Header, Message } from './HomePage.module'
 
+import { toast } from 'react-toastify';
 
 const HomePage = () => {
     const { isLoggedIn } = useAuth();
     const { user } = useAuth();
+
     return <>
         <Layout>
             <Container>
-                {isLoggedIn ? (<Message>Hey, <span style={{color:"rgb(87, 194, 33)"}}>{user.name}</span><br />
-                    you are already in the system!</Message>) :
+                {isLoggedIn ?
+                  
+                    (<Message>Hey, <span style={{ color: "rgb(87, 194, 33)" }}>{user.name}</span><br />
+                        you are already in the system!</Message>) :
                     (<>
                         <Header>Phonebook</Header>
                         <Message>
@@ -24,7 +28,9 @@ const HomePage = () => {
                
                 
             </Container>
+
         </Layout>
+        {isLoggedIn && toast.info("You are already in system!")}
     
     </>
 };

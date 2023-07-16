@@ -1,5 +1,3 @@
-// import { Outlet } from 'react-router-dom';
-// import { Suspense } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 // import { NavLink } from 'react-router-dom';

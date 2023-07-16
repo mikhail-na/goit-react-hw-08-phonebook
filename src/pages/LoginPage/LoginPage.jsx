@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {  logIn } from "redux/auth/authThunks";
+import { logIn } from "redux/auth/authThunks";
 
 import { Layout } from "components/Layout/Layout";
 import { Form, Label, Input, LinkToRegister, Span, Button, Header, Text} from "./LoginPage.module";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
+    const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const dispatch = useDispatch();
-
-    // const message = 'Log in to your account';
-    // const message = 'Create an account';
 
 
     const handleChange = ({ target: { name, value } }) => {
@@ -30,7 +28,10 @@ const LoginPage = () => {
     const handleFormSubmit = e => {
         e.preventDefault();
 
-        dispatch(logIn({ email, password }));
+        dispatch(logIn({ email, password })).then((error) => {
+            toast.error(`Oops! Something went wrong, ${error.message}. User was not found!`)
+        })
+
         setForm();
     }
 
@@ -44,7 +45,6 @@ const LoginPage = () => {
         <Form onSubmit={handleFormSubmit}>
             <Header>Login</Header>
             <Text>Enter your email address and password <br />to sign in</Text>
-            {/* {message} */}
             <Label >
                 E-mail
                 <Input

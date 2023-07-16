@@ -1,25 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect, lazy } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchContactsThunk } from 'redux/contacts/contactsThunks';
-import { selectIsLoading, selectError } from 'redux/contacts/selectors';
-// import { useFetchContactsQuery } from 'service/Api';
-import { Spinner } from './Spinner/Spinner';
-// import SharedNavLayout from "./SharedNavLayout/SharedNavLayout";
+
 import { AppBar } from "./AppBar/AppBar";
 import { PrivateRoute } from "./PrivateRoute/PrivatePoute";
 import { RestrictedRoute } from "./RestrictRoute/RestrictRoute";
 
-import { Container } from '@mui/material';
 
 
 import { useAuth } from 'hooks/useAuth';
-// import { refreshUser } from 'redux/auth/authThunks';
-
-// import { Layout } from './Layout/Layout';
-// import { ContactForm } from './ContactForm/ContactForm';
-// import { ContactFilter } from './ContactFilter/ContactFilter';
-// import { ContactsList } from './ContactsList/ContactsList';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
