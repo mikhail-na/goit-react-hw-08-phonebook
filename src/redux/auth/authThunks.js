@@ -25,7 +25,7 @@ export const register = createAsyncThunk(
       return res.data;
     } catch (error) {
       toast.error(
-        `Oops! Something went wrong, ${error.message}. You are already LoggedIn!`
+        `Oops! Something went wrong, ${error.message}. This User is already authorized!`
       );
       return thunkAPI.rejectWithValue(error.message);
     }
