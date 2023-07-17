@@ -18,11 +18,8 @@ const ContactsPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const { user } = useAuth();
   
-
-
   useEffect(() => {
     dispatch(fetchContactsThunk());
-      
   }, [dispatch]);
   
   useEffect(() => {
@@ -43,6 +40,5 @@ const ContactsPage = () => {
     </>
   )
     
-       
 };
 export default ContactsPage;

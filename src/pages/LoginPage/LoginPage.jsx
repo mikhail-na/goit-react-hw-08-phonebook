@@ -4,13 +4,12 @@ import { logIn } from "redux/auth/authThunks";
 
 import { Layout } from "components/Layout/Layout";
 import { Form, Label, Input, LinkToRegister, Span, Button, Header, Text} from "./LoginPage.module";
-import { toast } from "react-toastify";
+
 
 const LoginPage = () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
 
     const handleChange = ({ target: { name, value } }) => {
         switch (name) {
@@ -23,15 +22,12 @@ const LoginPage = () => {
             default:
                 return;
         }
-        
     }
 
     const handleFormSubmit = e => {
         e.preventDefault();
 
-        dispatch(logIn({ email, password })).then((error) => {
-            toast.error(`Oops! Something went wrong, ${error.message}. User was not found!`)
-        })
+        dispatch(logIn({ email, password }))
 
         setForm();
     }
@@ -71,7 +67,7 @@ const LoginPage = () => {
                     onChange={handleChange} />
             </Label>
             <Button type="submit">Sign In</Button>
-            <Span>Don't have an account?<LinkToRegister to="/register">Sign In</LinkToRegister></Span>
+            <Span>Don't have an account?<LinkToRegister to="/register">Sign Up</LinkToRegister></Span>
         </Form>
     </Layout>
 };

@@ -2,48 +2,48 @@ import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, refreshUser } from './authThunks'
 
 const initialState = {
-  user: { name: '', email: '' },
+  user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
 };
 
-const handleRegisterFullfield = (state, {payload}) => {
-    state.user = payload.user;
-    state.token = payload.token;
+const handleRegisterFullfield = (state,action) => {
+    state.user = action.payload.user;
+    state.token = action.payload.token;
     state.isLoggedIn = true;
 };
 
-const handleLogInFullfield = (state, { payload }) => {
-    state.user = payload.user;
-    state.token = payload.token;
+const handleLogInFullfield = (state, action) => {
+    state.user = action.payload.user;
+    state.token = action.payload.token;
     state.isLoggedIn = true;
 };
 
-const handleLogOutFullfield = (state, { payload }) => {
-    state.user = { name: '', email: '' };
+const handleLogOutFullfield = (state, action) => {
+    state.user = { name: null, email: null };
     state.token = null;
     state.isLoggedIn = false;
 };
 
-const handleRefreshPending = (state, { payload }) => {
-    state.isRefreshing = true;
+const handleRefreshPending = (state, action) => {
+     state.isRefreshing = true;
 };
 
-const handleRefreshFullfield = (state, { payload }) => {
-    state.user = payload.user;
-    state.isLoggedIn = true;
+const handleRefreshFullfield = (state, action) => {
+     state.user = action.payload;
+     state.isLoggedIn = true;
+     state.isRefreshing = false;
 }
 
-const handleRefreshRejected = (state, { payload }) => {
-    state.isLoggedIn = false;
+const handleRefreshRejected = (state, action) => {
+   state.isRefreshing = false;
 };
 
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-
   extraReducers: builder => {
         builder
           .addCase(register.fulfilled, handleRegisterFullfield)
@@ -54,5 +54,4 @@ const authSlice = createSlice({
             .addCase(refreshUser.rejected, handleRefreshRejected)
     }
 });
-
 export const authReducer = authSlice.reducer;

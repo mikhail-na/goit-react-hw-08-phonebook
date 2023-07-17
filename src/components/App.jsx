@@ -1,15 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchContactsThunk } from 'redux/contacts/contactsThunks';
 
 import { AppBar } from "./AppBar/AppBar";
+// import { PrivateRoute } from "./PrivateRoute/PrivatePoute";
 import { PrivateRoute } from "./PrivateRoute/PrivatePoute";
 import { RestrictedRoute } from "./RestrictRoute/RestrictRoute";
-
-
-
+// import { RestrictedRoute } from "./RestrictRoute/RestrictRoute";
+import { Spinner } from "./Spinner/Spinner";
 import { useAuth } from 'hooks/useAuth';
+import { refreshUser } from "redux/auth/authThunks";
+
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -22,12 +23,11 @@ export const App = () => {
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchContactsThunk());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-
   return isRefreshing ? (
-    <h1>Refreshing..</h1>
+   <Spinner/>
   ) : (
     <>
       <Routes>

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const Form = styled.form`
 display:flex;
@@ -62,4 +62,20 @@ cursor: pointer;
 width:144px;
 `;
 
+export const Span = styled.span`
+display: flex;
+text-align:center;
+align-items:center;
+font-size:20px;
+font-weight:500;
+
+margin-top:25px;
+margin-right:auto;
+margin-left:auto;
+`
+
+export const LinkToLoggin = styled(NavLink)`
+color: rgb(87, 194, 33);
+margin-left:10px;
+`
 

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import {  register } from "redux/auth/authThunks";
 
 import { Layout } from "components/Layout/Layout";
-import { Form, Label, Input, Button,  Header, Text} from "./RegisterPage.module";
+import { Form, Label, Input, Button,  Header, Text, Span, LinkToLoggin } from "./RegisterPage.module";
 
 const RegisterPage = () => {
     const [name, setName] = useState('');
@@ -89,7 +89,7 @@ const RegisterPage = () => {
                     onChange={handleChange} />
             </Label>
             <Button type="submit">Sign Up</Button>
-            {/* <Span>Don't have an account?<LinkToLogin to="/login">Sign In</LinkToLogin></Span> */}
+            <Span>Do you have an account?<LinkToLoggin to="/login">Sign In</LinkToLoggin></Span>
         </Form>
     </Layout>
 };

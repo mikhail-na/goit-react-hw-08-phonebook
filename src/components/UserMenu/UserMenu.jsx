@@ -16,8 +16,6 @@ export const UserMenu = () => {
     toast.success("LogOut was succsed!");
   };
   
-
-    
     
   return (
     <Wrapper>
