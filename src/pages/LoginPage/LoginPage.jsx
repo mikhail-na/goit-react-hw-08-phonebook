@@ -3,13 +3,14 @@ import { useDispatch } from "react-redux";
 import { logIn } from "redux/auth/authThunks";
 
 import { Layout } from "components/Layout/Layout";
-import { Form, Label, Input, LinkToRegister, Span, Button, Header, Text} from "./LoginPage.module";
+import { Form, Label, Input, PassInput, Div, Toggle, LinkToRegister, Span, Button, Header, Text} from "./LoginPage.module";
 
 
 const LoginPage = () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [visible, setVisible] = useState(false);
 
     const handleChange = ({ target: { name, value } }) => {
         switch (name) {
@@ -22,6 +23,11 @@ const LoginPage = () => {
             default:
                 return;
         }
+    }
+
+    const handlePassToggle = () => {
+        setVisible(!visible);
+        console.log('clicked')
     }
 
     const handleFormSubmit = e => {
@@ -56,15 +62,22 @@ const LoginPage = () => {
             </Label>
             <Label >
                 Password
-                <Input
-                    type="password"
+                <Div>
+                    <PassInput
+                    type={visible?"text":"password"}
                     name="password"
+                    maxLength={16}
                     pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                     title="Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters. For example TgeV23592, 3Greioct."
                     placeholder="Enter Password..."
                     required 
                     value={password} 
-                    onChange={handleChange} />
+                        onChange={handleChange} />
+                    <Toggle onClick={handlePassToggle}>
+                        {visible?"HIDE":"SHOW"}
+                    </Toggle>
+                </Div>
+                
             </Label>
             <Button type="submit">Sign In</Button>
             <Span>Don't have an account?<LinkToRegister to="/register">Sign Up</LinkToRegister></Span>
