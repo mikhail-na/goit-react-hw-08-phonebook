@@ -72,7 +72,8 @@ right: 14px;
 
 font-size:18px;
 font-weight:700;
-color: black;
+// color: white;
+
 
 
 cursor: pointer;

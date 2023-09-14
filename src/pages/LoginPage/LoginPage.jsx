@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logIn } from "redux/auth/authThunks";
-
+import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { Layout } from "components/Layout/Layout";
 import { Form, Label, Input, PassInput, Div, Toggle, LinkToRegister, Span, Button, Header, Text} from "./LoginPage.module";
 
@@ -74,7 +74,7 @@ const LoginPage = () => {
                     value={password} 
                         onChange={handleChange} />
                     <Toggle onClick={handlePassToggle}>
-                        {visible?"HIDE":"SHOW"}
+                        {visible ? <EyeOutlined /> : <EyeInvisibleOutlined/>}
                     </Toggle>
                 </Div>
                 

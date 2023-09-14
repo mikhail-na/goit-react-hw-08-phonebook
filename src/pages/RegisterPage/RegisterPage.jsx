@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import {  register } from "redux/auth/authThunks";
-
+import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { Layout } from "components/Layout/Layout";
 import { Form, Label, Div, Toggle, PassInput, Input, Button, Header, Text, Span, LinkToLoggin } from "./RegisterPage.module";
 // import { toast } from "react-toastify";
@@ -101,7 +101,7 @@ const RegisterPage = () => {
                     />
                     {/* {PassInput.value === 16 && toast.error("Password must be at least 16 characters")} */}
                     <Toggle onClick={handlePassToggle}>
-                        {visible ? "HIDE" : "SHOW"}
+                        {visible ? <EyeOutlined/> : <EyeInvisibleOutlined/>}
                     </Toggle>
                 </Div>
             </Label>    
